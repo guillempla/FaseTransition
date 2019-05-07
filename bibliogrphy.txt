@@ -1,0 +1,2 @@
+https://stackoverflow.com/questions/18726102/what-difference-between-rand-and-random-functions
+https://algs4.cs.princeton.edu/lectures/15UnionFind-2x2.pdf
