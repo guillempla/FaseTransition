@@ -2,11 +2,9 @@
 
 #include "unionfind.hh"
 
-
 using std::cin;
 using std::cout;
 using std::endl;
-
 
 void printVecInt(const vector<int>& v) {
   cout << v[0];
@@ -27,11 +25,13 @@ int main() {
   cout << "Introdueix l'element a buscar: ";
   cin >> n;
   cout << endl << "L'element pertany al grup: " << uF.find(n) << endl;
-  cout << endl << "Introdueix els dos elements a unir: ";
   int aux;
-  cin >> n >> aux;
-  uF.unify(n, aux);
-  cout << endl << "Vector actual: ";
-  printVecInt(uF.id);
-  cout << endl;
+  while (1) {
+    cout << endl << "Introdueix els dos elements a unir: ";
+    cin >> n >> aux;
+    uF.unify(n, aux);
+    cout << endl << "Vector actual: ";
+    printVecInt(uF.id);
+    cout << endl;
+  }
 }

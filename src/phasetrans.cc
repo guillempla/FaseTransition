@@ -11,13 +11,14 @@ using std::make_pair;
 
 typedef vector<int> Row;
 typedef vector<Row> Graph;
+typedef pair<pair<Graph, bool>, pair<Graph, bool> > Percolation;
 
 
-pair<bool, pair<Graph, Graph> > percolate(const Graph& graph, float q) {
-
-  Graph nPerc = nodePercolation();
-  Graph ePerc = edgePercolation();
-  return make_pair(false, make_pair(graph, graph));
+Percolation percolate(const Graph& graph, float q) {
+  
+  // Graph nPerc = nodePercolation();
+  // Graph ePerc = edgePercolation();
+  return make_pair(make_pair(graph, false), make_pair(graph, true));
 }
 
 inline Graph readGraph() {
@@ -46,10 +47,12 @@ int main() {
   Graph graph = readGraph();
   cout << "Probabilitat de fallida: ";
   float q; cin >> q;
-  pair<bool, pair<Graph, Graph> > p = percolate(graph, q);
-  p.first ? cout << "Percola" : cout << "No percola";
+  Percolation perc = percolate(graph, q);
   cout << endl << "Matriu adjacències graf percolat per nodes:" << endl;
-  printGraph(graph);
-  cout << endl << "Matriu adjacències graf percolat per arestes:" << endl;
-  printGraph(graph);
+  printGraph(perc.first.first);
+  perc.first.second ? cout << "Percola" : cout << "No percola";
+  cout << endl << endl << "Matriu adjacències graf percolat per arestes:" << endl;
+  printGraph(perc.second.first);
+  perc.second.second ? cout << "Percola" : cout << "No percola";
+  cout << endl;
 }
