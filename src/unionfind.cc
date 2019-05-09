@@ -17,5 +17,15 @@ int UnionFind::find(int i) {
 }
 
 void UnionFind::unify(const int p, const int q) {
-  id[find(p)] = find(q);
+  int i = find(p);
+  int j = find(q);
+  if (i == j) return;
+  if  (sz[i] < sz[j]) {
+    id[i] = j;
+    sz[j] += sz[i];
+  }
+  else {
+    id[j] = i;
+    sz[i] += sz[j];
+  }
 }
