@@ -6,6 +6,7 @@ using std::vector;
 class UnionFind {
   public:
     vector<int> id;
+    vector<int> sz;
   public:
     UnionFind(const int n);
   public:
