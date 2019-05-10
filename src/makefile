@@ -1,24 +1,18 @@
-go: phasetrans
+go: main
 	@clear
-	@./phasetrans
+	@./main
 
-main: main.o unionfind.o
-	g++ -o main main.o unionfind.o
+main: main.cc graph.cc unionfind.cc
+	g++ $+ -o $@
 
-main.o: main.cc
-	g++ -c main.cc
+graph: graph.cc
+	g++ $+ -o $@
 
-phasetrans: phasetrans.o
-	g++ -o phasetrans phasetrans.o
-
-phasetrans.o: phasetrans.cc
-	g++ -c phasetrans.cc
-
-unionfind.o: unionfind.cc
-	g++ -c unionfind.cc
+unionfind: unionfind.cc
+	g++ $+ -o $@
 
 clean:
-	@rm -fv *.o
+	rm -fv *.o
 
 distclean: clean
-	@rm -fv main phasetrans
+	rm -fv main
