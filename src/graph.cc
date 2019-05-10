@@ -60,13 +60,26 @@ Graph Graph::percolateEdges(int q) {
   return g;
 }
 
+bool Graph::checkConnected(const list<int>& top, const list<int>& bottom) {
+  UnionFind uf(this->graph.size());
+  uf.initializeTopBottom(top, bottom);
+  for (int i = 0; i < this->graph.size(); ++i) {
+    list<int>::iterator it;
+    for (it = this->graph[i].begin(); it != this->graph[i].end(); it++)
+      uf.unify(i, *it);
+  }
+  return uf.connected();
+}
+
 void Graph::read() {
   //int nVerts; cin >> nVerts;
   int vert0, vert1;
   while (cin >> vert0 >> vert1) {
+    if (vert0 == -1 || vert1 == -1) break;
     this->addEdge(vert0, vert1);
   }
 }
+
 void Graph::print() const{
 	int size = this->graph.size();
 	if (size > 0){

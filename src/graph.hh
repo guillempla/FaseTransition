@@ -4,6 +4,7 @@
 #include <iostream>
 #include <list>
 #include <vector>
+#include "unionfind.hh"
 
 using namespace std;
 
@@ -24,6 +25,7 @@ class Graph {
     void deleteVert(int vert);
     Graph percolateVertices(int q);
     Graph percolateEdges(int q);
+    bool checkConnected(const list<int>& top, const list<int>& bottom);
   public:
     //__________CONSULTORES__________
     void read();
