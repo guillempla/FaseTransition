@@ -37,6 +37,27 @@ void Graph::deleteVert(int vert){
   this->graph[vert].clear();
 }
 
+Graph percolateVertices(int q) {
+  Graph g = this->graph;
+  for(int i = 0; i < g.size(); ++i)
+    if (rand()%1 < q)
+      deleteVert(i);
+  return g;
+}
+
+Graph percolateEdges(int q) {
+  Graph aux = this->graph;
+  Graph g(this->graph.size());
+  for (int i = 0; i < this->graph.size(); ++i) {
+    list<int>::iterator it;
+    for (it = this->graph[i].begin(); it != this->graph[i].end(); it++) {
+      if (!rand()%1 < q)
+        g.addEdge(i, *it);
+      deleteEdge(i, *it);
+    }
+  }
+}
+
 void Graph::read() {
   //int nVerts; cin >> nVerts;
   int vert0, vert1;
@@ -48,7 +69,7 @@ void Graph::print() const{
 	int size = this->graph.size();
 	if (size > 0){
 		for (int i = 0; i < size ; ++i){
-			cout << "(" << i << ") : "; 
+			cout << "(" << i << ") : ";
 			for (list <int>::const_iterator it = this->graph[i].cbegin(); it != this->graph[i].cend(); ++it){
 				cout << *it << " ";
 			}

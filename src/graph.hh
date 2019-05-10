@@ -22,6 +22,8 @@ class Graph {
     void addEdge(const int vert0, const int vert1);
     void deleteEdge(int vert0, int vert1);
     void deleteVert(int vert);
+    Graph percolateVertices(int q);
+    Graph percolateEdges(int q);
   public:
     //__________CONSULTORES__________
     void read();
