@@ -1,7 +1,7 @@
 #include "unionfind.hh"
 
 
-UnionFind::UnionFind(const int n) {
+UnionFind::UnionFind(int n) {
   this->n = n+2;
   this->id = vector<int>(this->n);
   this->sz = vector<int>(this->n);

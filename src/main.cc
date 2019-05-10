@@ -2,15 +2,14 @@
 #include <vector>
 #include <ctime>
 #include "graph.hh"
-#include "unionfind.hh"
 using namespace std;
 // ========================================================================== //
 
-Graph percolateVert(const Graph& graph, float q) {
+Graph percolateVert(const Graph& graph, float q)  {
 	return graph.percolateVertices(q);
 }
 
-Graph percolateEdge(const Graph& graph, float q)  {
+Graph percolateEdge(Graph& graph, float q)  {
 	return graph.percolateEdges(q);
 }
 
@@ -19,7 +18,7 @@ bool connectaGraella(const Graph& graph, int N){
 	for (int i = 0; i < N; ++i) entrada.push_back(i);
 	list <int> sortida;
 	for (int i = N*N - N; i < N*N; ++i ) sortida.push_back(i);
-	return checkConnected(entrada, sortida);
+	return graph.checkConnected(entrada, sortida);
 }
 
 double calcula_temps(double inici, double fi){

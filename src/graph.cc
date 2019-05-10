@@ -37,11 +37,11 @@ void Graph::deleteVert(int vert){
   this->graph[vert].clear();
 }
 
-Graph Graph::percolateVertices(int q) {
+Graph Graph::percolateVertices(int q) const {
   Graph g = *this;
   for(int i = 0; i < graph.size(); ++i)
     if (rand()%1 < q)
-      deleteVert(i);
+      g.deleteVert(i);
   return g;
 }
 
@@ -60,12 +60,12 @@ Graph Graph::percolateEdges(int q) {
   return g;
 }
 
-bool Graph::checkConnected(const list<int>& top, const list<int>& bottom) {
+bool Graph::checkConnected(const list<int>& top, const list<int>& bottom) const{
   UnionFind uf(this->graph.size());
   uf.initializeTopBottom(top, bottom);
   for (int i = 0; i < this->graph.size(); ++i) {
-    list<int>::iterator it;
-    for (it = this->graph[i].begin(); it != this->graph[i].end(); it++)
+    list<int>::const_iterator it;
+    for (it = this->graph[i].cbegin(); it != this->graph[i].cend(); it++)
       uf.unify(i, *it);
   }
   return uf.connected();

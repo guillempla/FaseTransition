@@ -11,7 +11,7 @@ class UnionFind {
     vector<int> id;
     vector<int> sz;
   public:
-    UnionFind(const int n);
+    UnionFind(int n);
   public:
     int find(int i);
     void unify(const int p, const int q);
