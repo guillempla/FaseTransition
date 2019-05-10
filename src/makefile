@@ -18,4 +18,4 @@ clean:
 	rm -fv *.o
 
 distclean: clean
-	rm -fv main distclean
+	rm -fv main driverGraph
