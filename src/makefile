@@ -1,3 +1,5 @@
+EXECS = main driverGraph
+
 go: main
 	@clear
 	@./main
@@ -18,4 +20,4 @@ clean:
 	rm -fv *.o
 
 distclean: clean
-	rm -fv main driverGraph
+	rm -fv $(EXECS)
