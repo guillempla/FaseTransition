@@ -1,8 +1,9 @@
-EXECS = main driverGraph
+EXECS := main driverGraph
 
 go: main
 	@clear
-	@./main
+	@python3 graphgen.py > in.txt
+	@./main < in.txt
 
 main: main.cc graph.cc unionfind.cc
 	g++ $+ -o $@

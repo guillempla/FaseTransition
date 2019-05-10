@@ -1,9 +1,12 @@
 import networkx as nx
-N = 3
+N = 9
 G = nx.Graph()
-G=nx.complete_graph(100)
+#G=nx.complete_graph(100)
 G = nx.grid_2d_graph(N,N)
-print ("Nodes of graph")
-print (G.nodes)
-print ("Edges of graph")
-print (G.edges)
+
+#print("Nombre de vertexos")
+print (N*N)
+#print("Nombre d'arestes")
+for i in G.edges:
+    print (N*i[0][0]+i[0][1], end = ' ')
+    print (N*i[1][0]+i[1][1])

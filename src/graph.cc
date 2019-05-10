@@ -48,15 +48,26 @@ Graph Graph::percolateVertices(float q) const {
 Graph Graph::percolateEdges(float q) {
   Graph aux = *this;
   Graph g(this->graph.size());
+  cout << "entro loop percolateedge" << endl; // DEBUG
   for (int i = 0; i < this->graph.size(); ++i) {
-    list<int>::iterator it;
-    for (it = this->graph[i].begin(); it != this->graph[i].end(); it++) {
-      if (!rand()%101 < q*100)
+    cout << "iteracio " << i << endl; // DEBUG
+    list<int>::iterator it = this->graph[i].begin();
+    while (it != this->graph[i].end()) {
+      //cout << "iteracio llista " << *it << endl; // DEBUG
+      if (!rand()%101 < q*100){
+        cout << "addEdge" << endl; // DEBUG
         g.addEdge(i, *it);
+        cout << "addEdge done" << endl; // DEBUG
+      }
+      cout << "deleteEdge" << endl; // DEBUG
       deleteEdge(i, *it);
+      it = this->graph[i].begin();
+      cout << "deleteEdge done" << endl; // DEBUG
     }
   }
+  cout << "end loop" << endl; // DEBUG
   *this = aux;
+  cout << "this" << endl; // DEBUG
   return g;
 }
 
@@ -75,7 +86,6 @@ void Graph::read() {
   //int nVerts; cin >> nVerts;
   int vert0, vert1;
   while (cin >> vert0 >> vert1) {
-    if (vert0 == -1 || vert1 == -1) break;
     this->addEdge(vert0, vert1);
   }
 }
