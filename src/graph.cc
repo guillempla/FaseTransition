@@ -1,9 +1,18 @@
 #include "graph.hh"
 
+Graph::Graph(){}
 
 Graph::Graph(const int vert) {
   this->graph = vector<list<int> >(vert, list<int>());
 }
+/*
+Graph::Graph(const Graph & graph){
+	vector <list <int>> aux = graph.getGraph();
+	this->graph = vector<list<int> >(aux.size(), list<int>());
+	for (int i = 0; i < aux.size(); ++i){
+		this->graph[i] = aux[i];
+	}
+}*/
 
 Graph::~Graph() {}
 
@@ -34,4 +43,18 @@ void Graph::read() {
   while (cin >> vert0 >> vert1) {
     this->addEdge(vert0, vert1);
   }
+}
+void Graph::print() const{
+	int size = this->graph.size();
+	if (size > 0){
+		for (int i = 0; i < size ; ++i){
+			cout << "(" << i << ") : "; 
+			for (list <int>::const_iterator it = this->graph[i].cbegin(); it != this->graph[i].cend(); ++it){
+				cout << *it << " ";
+			}
+			cout << endl;
+		}
+	}else{
+		cout << "empty graph" << endl;
+	}
 }
