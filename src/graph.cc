@@ -37,16 +37,16 @@ void Graph::deleteVert(int vert){
   this->graph[vert].clear();
 }
 
-Graph percolateVertices(int q) {
-  Graph g = this->graph;
-  for(int i = 0; i < g.size(); ++i)
+Graph Graph::percolateVertices(int q) {
+  Graph g = *this;
+  for(int i = 0; i < graph.size(); ++i)
     if (rand()%1 < q)
       deleteVert(i);
   return g;
 }
 
-Graph percolateEdges(int q) {
-  Graph aux = this->graph;
+Graph Graph::percolateEdges(int q) {
+  Graph aux = *this;
   Graph g(this->graph.size());
   for (int i = 0; i < this->graph.size(); ++i) {
     list<int>::iterator it;
@@ -56,6 +56,8 @@ Graph percolateEdges(int q) {
       deleteEdge(i, *it);
     }
   }
+  *this = aux;
+  return g;
 }
 
 void Graph::read() {
