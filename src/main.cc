@@ -7,7 +7,7 @@ using namespace std;
 // ========================================================================== //
 
 Graph percolateVert(const Graph& graph, float q) {
-	return graph.percolateVertices(q)
+	return graph.percolateVertices(q);
 }
 
 Graph percolateEdge(const Graph& graph, float q)  {
@@ -46,7 +46,7 @@ int main() {
   
   int id_interval = 0;
   clock_t inici;
-  for (double q = 0; q < 1; q += 0.1) {
+  for (double q = 0; q < 1; q += increment) {
     for (int i = 0; i < nombre_experiments_per_q; ++i){
     	Graph graf_aux = percolateVert(graph, q);
     	//mesurem temps de trobar connexio en graf percolat per VERTEX
@@ -71,5 +71,8 @@ int main() {
   	temps_edge[i] /= nombre_experiments_per_q;
   	propietat_vert[i] /= nombre_experiments_per_q;
   	propietat_edge[i] /= nombre_experiments_per_q;
+  }
+  for (int i = 0; i < nombre_intervals; ++i){
+  	cout << i*increment <<","<< propietat_vert[i] << endl;
   }
 }
