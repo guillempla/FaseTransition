@@ -1,5 +1,4 @@
 #include <vector>
-#include <math.h>
 #include <list>
 
 using namespace std;

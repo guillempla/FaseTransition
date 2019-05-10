@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <ctime>
+#include <cmath>
 #include "graph.hh"
 using namespace std;
 // ========================================================================== //
@@ -42,7 +43,7 @@ int main() {
 
   vector <double> propietat_vert (nombre_intervals,0);		//propietat[4] guarda la mitjana dels experiments amb q = (4 * increment), com que la propietat es cert/fals la mitjana pertany a [0,1]
   vector <double> propietat_edge (nombre_intervals,0);		//la propietat quan q = 1 no ens interessa quan mirem connectivitat perque una percolacio amb q = 1 es un graf sense arestes <-justificacio nombre elements dels vectors
-  
+
   int id_interval = 0;
   clock_t inici;
   for (double q = 0; q < 1; q += increment) {
@@ -51,14 +52,14 @@ int main() {
     	//mesurem temps de trobar connexio en graf percolat per VERTEX
     	inici = clock();
     	bool esConnex = connectaGraella (graf_aux, int(sqrt(nVert)) );
-    	if (esConnex)	propietat_vert[id_interval] += 1.0; 
+    	if (esConnex)	propietat_vert[id_interval] += 1.0;
     	temps_vert[id_interval] += calcula_temps(inici, clock());
     	//********************************
     	graf_aux = percolateEdge(graph, q);
 			//mesurem temps de trobar connexio em graf percolat per EDGES
     	inici = clock();
     	esConnex = connectaGraella (graf_aux, int(sqrt(nVert)) );
-    	if (esConnex)	propietat_edge[id_interval] += 1.0; 
+    	if (esConnex)	propietat_edge[id_interval] += 1.0;
     	temps_edge[id_interval] += calcula_temps(inici, clock());
 			//********************************
     }

@@ -23,8 +23,8 @@ class Graph {
     void addEdge(const int vert0, const int vert1);
     void deleteEdge(int vert0, int vert1);
     void deleteVert(int vert);
-    Graph percolateVertices(int q) const;
-    Graph percolateEdges(int q);
+    Graph percolateVertices(float q) const;
+    Graph percolateEdges(float q);
     bool checkConnected(const list<int>& top, const list<int>& bottom) const;
   public:
     //__________CONSULTORES__________

@@ -37,21 +37,21 @@ void Graph::deleteVert(int vert){
   this->graph[vert].clear();
 }
 
-Graph Graph::percolateVertices(int q) const {
+Graph Graph::percolateVertices(float q) const {
   Graph g = *this;
   for(int i = 0; i < graph.size(); ++i)
-    if (rand()%1 < q)
+    if (rand()%101 < q*100)
       g.deleteVert(i);
   return g;
 }
 
-Graph Graph::percolateEdges(int q) {
+Graph Graph::percolateEdges(float q) {
   Graph aux = *this;
   Graph g(this->graph.size());
   for (int i = 0; i < this->graph.size(); ++i) {
     list<int>::iterator it;
     for (it = this->graph[i].begin(); it != this->graph[i].end(); it++) {
-      if (!rand()%1 < q)
+      if (!rand()%101 < q*100)
         g.addEdge(i, *it);
       deleteEdge(i, *it);
     }
