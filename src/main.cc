@@ -5,6 +5,9 @@
 #include "graph.hh"
 using namespace std;
 
+const int INTERVALS = 100;
+const int EXPERIMENTS = 100;
+
 // ========================================================================== //
 
 Graph percolateVert(const Graph& graph, float q)  {
@@ -33,9 +36,9 @@ int main() {
   int nVert; cin >> nVert;	//nombre total de vertex del graf
   Graph graph(nVert);
   graph.read();
-  int nombre_intervals = 20;													//nombre de punts en l'eix X que volem en el grafic (sense incloure q = 1)
+  int nombre_intervals = INTERVALS;													//nombre de punts en l'eix X que volem en el grafic (sense incloure q = 1)
   double increment = 1.0 / double(nombre_intervals);
-  int nombre_experiments_per_q = 15;									//quants experiments realitzem per una determinada q
+  int nombre_experiments_per_q = EXPERIMENTS;									//quants experiments realitzem per una determinada q
 
   vector <double> temps_vert (nombre_intervals,0);				//en ms
   vector <double> temps_edge (nombre_intervals,0);
@@ -53,9 +56,6 @@ int main() {
     	bool esConnex;
       Graph graf_aux;
 
-
-
-
       //PERCOLACIO PER VERTICES
       graf_aux = percolateVert(graph, q);
     	//mesurem temps de trobar connexio en graf percolat per VERTEX
@@ -66,9 +66,6 @@ int main() {
       if (esConnex) propietat_vert[id_interval] += 1.0;
       n_edge_vert[id_interval] += double(graf_aux.getNedges());
 
-
-
-
       //PERCOLACIO PER EDGES
     	graf_aux = percolateEdge(graph, q);
 			//mesurem temps de trobar connexio em graf percolat per EDGES
@@ -78,10 +75,6 @@ int main() {
 			//********************************
       if (esConnex) propietat_edge[id_interval] += 1.0;
       n_edge_edge[id_interval] += double(graf_aux.getNedges());
-
-
-
-
     }
     id_interval++;
 		system("clear");
