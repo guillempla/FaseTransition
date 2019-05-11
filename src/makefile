@@ -1,4 +1,4 @@
-CC    := $(cc)
+CC    := g++
 EXECS := main driverGraph
 
 go: main
