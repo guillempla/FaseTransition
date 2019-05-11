@@ -1,21 +1,22 @@
+CC    := $(cc)
 EXECS := main driverGraph
 
 go: main
 	@clear
 	@python3 graphgen.py > in.txt
-	@./main < in.txt
+	@time ./main < in.txt
 
 main: main.cc graph.cc unionfind.cc
-	g++ $+ -o $@
+	$(cc) -O2 $+ -o $@
 
 graph: graph.cc
-	g++ $+ -o $@
+	$(cc) $+ -o $@
 
 driverGraph: graphDriver.cc
-	g++ $+ -o $@
+	$(cc) $+ -o $@
 
 unionfind: unionfind.cc
-	g++ $+ -o $@
+	$(cc) $+ -o $@
 
 clean:
 	rm -fv *.o
