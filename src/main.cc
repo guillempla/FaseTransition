@@ -7,7 +7,7 @@ using namespace std;
 
 const bool DEBUG = false;
 
-const int INTERVALS = 50;
+const int INTERVALS = 40;
 const int EXPERIMENTS = 50;
 
 // ========================================================================== //
@@ -57,7 +57,7 @@ int main() {
 
   int id_interval = 0;
   clock_t inici;
-  for (double q = 0; q < 1; q += increment) {
+  for (double q = 0; q <= 1; q += increment) {
     for (int i = 0; i < nombre_experiments_per_q; ++i){
     	bool esConnex;
       Graph graf_aux;
@@ -109,7 +109,7 @@ int main() {
     n_edge_vert[i] /= nombre_experiments_per_q;
     n_edge_edge[i] /= nombre_experiments_per_q;
   }
-  for (int i = 0; i < nombre_intervals; ++i){
+  for (int i = 0; i <= nombre_intervals; ++i){
   	cout << i*increment <<" "<< propietat_vert[i] << " ";
 		cout << temps_vert[i] <<" "<< n_edge_vert[i] + nVert;
 
