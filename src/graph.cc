@@ -62,12 +62,11 @@ Graph Graph::percolateEdges(float q) {
   for (int i = 0; i < this->graph.size(); ++i) {
     list<int>::iterator it = this->graph[i].begin();
     while (it != this->graph[i].end()) {
-      if (rand()%101 >= q*100){
+      if (rand()%101 >= q*100.0){
         g.addEdge(i, *it);
       }
       this->deleteEdge(i, *it);
       it = this->graph[i].begin();
-			++it;
     }
   }
   *this = aux;

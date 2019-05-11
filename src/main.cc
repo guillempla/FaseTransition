@@ -5,8 +5,10 @@
 #include "graph.hh"
 using namespace std;
 
-const int INTERVALS = 100;
-const int EXPERIMENTS = 100;
+const bool DEBUG = false;
+
+const int INTERVALS = 50;
+const int EXPERIMENTS = 50;
 
 // ========================================================================== //
 
@@ -36,6 +38,10 @@ int main() {
   int nVert; cin >> nVert;	//nombre total de vertex del graf
   Graph graph(nVert);
   graph.read();
+	if (DEBUG) {
+		graph.print();
+		cout << endl;
+	}
   int nombre_intervals = INTERVALS;													//nombre de punts en l'eix X que volem en el grafic (sense incloure q = 1)
   double increment = 1.0 / double(nombre_intervals);
   int nombre_experiments_per_q = EXPERIMENTS;									//quants experiments realitzem per una determinada q
@@ -66,6 +72,10 @@ int main() {
       if (esConnex) propietat_vert[id_interval] += 1.0;
       n_edge_vert[id_interval] += double(graf_aux.getNedges());
 
+			if (DEBUG) {
+				graf_aux.print();
+			}
+
       //PERCOLACIO PER EDGES
     	graf_aux = percolateEdge(graph, q);
 			//mesurem temps de trobar connexio em graf percolat per EDGES
@@ -75,12 +85,22 @@ int main() {
 			//********************************
       if (esConnex) propietat_edge[id_interval] += 1.0;
       n_edge_edge[id_interval] += double(graf_aux.getNedges());
+
+			if (DEBUG) {
+				cout << endl;
+				graf_aux.print();
+				cout << endl;
+			}
+
     }
     id_interval++;
-		system("clear");
-    cout << id_interval <<"/"<< nombre_intervals << endl;
+		if (not DEBUG) {
+			system("clear");
+			cout << id_interval <<"/"<< nombre_intervals << endl;
+		}
   }
-	system("clear");
+	if (not DEBUG)
+		system("clear");
   for (int i = 0; i < nombre_intervals; ++i){
   	temps_vert[i] /= nombre_experiments_per_q;
   	temps_edge[i] /= nombre_experiments_per_q;
