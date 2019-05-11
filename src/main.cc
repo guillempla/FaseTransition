@@ -7,17 +7,17 @@ using namespace std;
 
 const bool DEBUG = false;
 
-const int INTERVALS = 40;
-const int EXPERIMENTS = 50;
+const int INTERVALS = 5;
+const int EXPERIMENTS = 30;
 
 // ========================================================================== //
 
-Graph percolateVert(const Graph& graph, float q)  {
-	return graph.percolateVertices(q);
+Graph percolateVert(const Graph& graph, int numerador, int denominador)  {
+	return graph.percolateVertices(numerador, denominador);
 }
 
-Graph percolateEdge(Graph& graph, float q)  {
-	return graph.percolateEdges(q);
+Graph percolateEdge(Graph& graph, int numerador, int denominador)  {
+	return graph.percolateEdges(numerador, denominador);
 }
 
 bool connectaGraella(const Graph& graph, int N){
@@ -42,8 +42,9 @@ int main() {
 		graph.print();
 		cout << endl;
 	}
-  int nombre_intervals = INTERVALS;													//nombre de punts en l'eix X que volem en el grafic (sense incloure q = 1)
-  double increment = 1.0 / double(nombre_intervals);
+  int nombre_intervals = INTERVALS;													//nombre de punts en l'eix X que volem en el grafic inclos q = 0 i 1
+  //double increment = 1.0 / double(nombre_intervals);
+  int denominador = nombre_intervals - 1;
   int nombre_experiments_per_q = EXPERIMENTS;									//quants experiments realitzem per una determinada q
 
   vector <double> temps_vert (nombre_intervals,0);				//en ms
@@ -55,15 +56,17 @@ int main() {
   vector <double> propietat_vert (nombre_intervals,0);		//propietat[4] guarda la mitjana dels experiments amb q = (4 * increment), com que la propietat es cert/fals la mitjana pertany a [0,1]
   vector <double> propietat_edge (nombre_intervals,0);		//la propietat quan q = 1 no ens interessa quan mirem connectivitat perque una percolacio amb q = 1 es un graf sense arestes <-justificacio nombre elements dels vectors
 
-  int id_interval = 0;
+  
   clock_t inici;
-  for (double q = 0; q <= 1; q += increment) {
+  for (int id_interval = 0; id_interval < nombre_intervals; id_interval++) {
+  	/*double q = double(id_interval) / denominador;
+  	cout << id_interval <<" "<< q<<endl;*/
     for (int i = 0; i < nombre_experiments_per_q; ++i){
     	bool esConnex;
       Graph graf_aux;
 
       //PERCOLACIO PER VERTICES
-      graf_aux = percolateVert(graph, q);
+      graf_aux = percolateVert(graph, id_interval, denominador);
     	//mesurem temps de trobar connexio en graf percolat per VERTEX
     	inici = clock();
     	esConnex = connectaGraella (graf_aux, int(sqrt(nVert)) );
@@ -77,7 +80,7 @@ int main() {
 			}
 
       //PERCOLACIO PER EDGES
-    	graf_aux = percolateEdge(graph, q);
+    	graf_aux = percolateEdge(graph, id_interval, denominador);
 			//mesurem temps de trobar connexio em graf percolat per EDGES
     	inici = clock();
     	esConnex = connectaGraella (graf_aux, int(sqrt(nVert)) );
@@ -93,14 +96,13 @@ int main() {
 			}
 
     }
-    id_interval++;
 		if (not DEBUG) {
-			system("clear");
-			cout << id_interval <<"/"<< nombre_intervals << endl;
+			//system("clear");
+			//cout << id_interval+1 <<"/"<< nombre_intervals <<" "<<q<< endl;
 		}
   }
 	if (not DEBUG)
-		system("clear");
+		//system("clear");
   for (int i = 0; i < nombre_intervals; ++i){
   	temps_vert[i] /= nombre_experiments_per_q;
   	temps_edge[i] /= nombre_experiments_per_q;
@@ -109,13 +111,13 @@ int main() {
     n_edge_vert[i] /= nombre_experiments_per_q;
     n_edge_edge[i] /= nombre_experiments_per_q;
   }
-  for (int i = 0; i <= nombre_intervals; ++i){
-  	cout << i*increment <<" "<< propietat_vert[i] << " ";
+  for (int i = 0; i < nombre_intervals; ++i){
+  	cout << i/double(denominador) <<" "<< propietat_vert[i] << " ";
 		cout << temps_vert[i] <<" "<< n_edge_vert[i] + nVert;
 
     cout << " || ";
 
-    cout << i*increment <<" "<< propietat_vert[i] << " ";
+    cout << i/double(denominador) <<" "<< propietat_vert[i] << " ";
     cout << temps_edge[i] <<" "<<n_edge_edge[i] + nVert << endl;
   }
 }

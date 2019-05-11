@@ -31,9 +31,13 @@ class Graph {
     vector<list<int> > getGraph() const;
     int getNedges() const;
     int getNvertices() const;
-    Graph percolateVertices(float q) const;
-    Graph percolateEdges(float q);
+    Graph percolateVertices(int numerador, int denominador) const;
+    Graph percolateEdges(int numerador, int denominador);
     bool checkConnected(const list<int>& top, const list<int>& bottom) const;
     void print() const;
+
+    //ALTRES
+    bool probabilitat(int numerador, int denominador) const;
+    bool probabilitat_complementaria(int numerador, int denominador) const;
 };
 #endif

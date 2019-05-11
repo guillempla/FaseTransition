@@ -45,24 +45,40 @@ void Graph::read() {
   }
 }
 
+bool Graph::probabilitat(int numerador, int denominador)const{
+  bool ret = false;
+  int valor = rand()%denominador;
+  if (valor < numerador) ret = true;
+  return ret;
+}
+
+bool Graph::probabilitat_complementaria(int numerador, int denominador) const{
+  bool ret = false;
+  numerador = denominador - numerador;
+  int valor = rand()%denominador;
+  if (valor < numerador) ret = true;
+  return ret;
+}
+
 
 
 
 //__________CONSULTORES__________
-Graph Graph::percolateVertices(float q) const {
+Graph Graph::percolateVertices(int numerador, int denominador) const {
   Graph g = *this;
+  double resta;
   for(int i = 0; i < graph.size(); ++i)
-    if (rand()%101 < q*100)
+    if (probabilitat(numerador, denominador))
       g.deleteVert(i);
   return g;
 }
-Graph Graph::percolateEdges(float q) {
+Graph Graph::percolateEdges(int numerador, int denominador) {
   Graph aux = *this;
   Graph g(this->graph.size());
   for (int i = 0; i < this->graph.size(); ++i) {
     list<int>::iterator it = this->graph[i].begin();
     while (it != this->graph[i].end()) {
-      if (rand()%101 >= q*100.0){
+      if (probabilitat_complementaria(numerador, denominador)){
         g.addEdge(i, *it);
       }
       this->deleteEdge(i, *it);
