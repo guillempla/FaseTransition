@@ -72,6 +72,7 @@ int main() {
   	propietat_edge[i] /= nombre_experiments_per_q;
   }
   for (int i = 0; i < nombre_intervals; ++i){
-  	cout << i*increment <<","<< propietat_vert[i] << endl;
+  	cout << i*increment <<"  "<< propietat_vert[i] << "  ";
+		cout << temps_vert[i] << endl;
   }
 }
