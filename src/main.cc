@@ -55,7 +55,7 @@ int main() {
 
 
 
-      
+
       //PERCOLACIO PER VERTICES
       graf_aux = percolateVert(graph, q);
     	//mesurem temps de trobar connexio en graf percolat per VERTEX
@@ -69,7 +69,7 @@ int main() {
 
 
 
-      //PERCOLACIO PER EDGES   	
+      //PERCOLACIO PER EDGES
     	graf_aux = percolateEdge(graph, q);
 			//mesurem temps de trobar connexio em graf percolat per EDGES
     	inici = clock();
@@ -84,9 +84,10 @@ int main() {
 
     }
     id_interval++;
+		system("clear");
     cout << id_interval <<"/"<< nombre_intervals << endl;
   }
-  
+	system("clear");
   for (int i = 0; i < nombre_intervals; ++i){
   	temps_vert[i] /= nombre_experiments_per_q;
   	temps_edge[i] /= nombre_experiments_per_q;

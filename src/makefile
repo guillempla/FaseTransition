@@ -19,7 +19,4 @@ unionfind: unionfind.cc
 	$(CC) $+ -o $@
 
 clean:
-	rm -fv *.o
-
-distclean: clean
-	rm -fv $(EXECS)
+	rm -fv $(EXECS) *.txt
