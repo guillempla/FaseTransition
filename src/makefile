@@ -7,16 +7,16 @@ go: main
 	@time ./main < in.txt
 
 main: main.cc graph.cc unionfind.cc
-	$(cc) -O2 $+ -o $@
+	$(CC) -O2 $+ -o $@
 
 graph: graph.cc
-	$(cc) $+ -o $@
+	$(CC) $+ -o $@
 
 driverGraph: graphDriver.cc
-	$(cc) $+ -o $@
+	$(CC) $+ -o $@
 
 unionfind: unionfind.cc
-	$(cc) $+ -o $@
+	$(CC) $+ -o $@
 
 clean:
 	rm -fv *.o
