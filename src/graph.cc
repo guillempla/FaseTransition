@@ -5,14 +5,6 @@ Graph::Graph(){}
 Graph::Graph(const int vert) {
   this->graph = vector<list<int> >(vert, list<int>());
 }
-/*
-Graph::Graph(const Graph & graph){
-	vector <list <int>> aux = graph.getGraph();
-	this->graph = vector<list<int> >(aux.size(), list<int>());
-	for (int i = 0; i < aux.size(); ++i){
-		this->graph[i] = aux[i];
-	}
-}*/
 
 Graph::~Graph() {}
 
