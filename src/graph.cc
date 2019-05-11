@@ -1,9 +1,14 @@
 #include "graph.hh"
-
-Graph::Graph(){}
+//___________CONSTRUCTORES__________
+Graph::Graph(){
+	this->nVertices = 0;
+	this->nEdges = 0;
+}
 
 Graph::Graph(const int vert) {
   this->graph = vector<list<int> >(vert, list<int>());
+  this->nVertices = vert;
+  this->nEdges = 0;
 }
 
 Graph::~Graph() {}
@@ -11,24 +16,39 @@ Graph::~Graph() {}
 vector<list<int> > Graph::getGraph() const {
   return this->graph;
 }
+//___________MODIFICADORES__________
 
 void Graph::addEdge(const int vert0, const int vert1) {
   this->graph[vert0].push_back(vert1);
   this->graph[vert1].push_back(vert0);
-}
-
-void Graph::deleteEdge(int vert0, int vert1){
-  this->graph[vert0].remove(vert1);
-  this->graph[vert1].remove(vert0);
+  this->nEdges += 2;
 }
 
 void Graph::deleteVert(int vert){
+	this->nEdges -= 2 * (this->graph[vert].size() );
   for (list <int>::iterator it = this->graph[vert].begin(); it != this->graph[vert].end(); ++it){
     this->graph[*it].remove(vert);
   }
   this->graph[vert].clear();
 }
 
+void Graph::deleteEdge(int vert0, int vert1){
+  this->graph[vert0].remove(vert1);
+  this->graph[vert1].remove(vert0);
+  this->nEdges -=2;
+}
+
+void Graph::read() {
+  int vert0, vert1;
+  while (cin >> vert0 >> vert1) {
+    this->addEdge(vert0, vert1);
+  }
+}
+
+
+
+
+//__________CONSULTORES__________
 Graph Graph::percolateVertices(float q) const {
   Graph g = *this;
   for(int i = 0; i < graph.size(); ++i)
@@ -36,7 +56,6 @@ Graph Graph::percolateVertices(float q) const {
       g.deleteVert(i);
   return g;
 }
-
 Graph Graph::percolateEdges(float q) {
   Graph aux = *this;
   Graph g(this->graph.size());
@@ -65,11 +84,11 @@ bool Graph::checkConnected(const list<int>& top, const list<int>& bottom) const{
   return uf.connected();
 }
 
-void Graph::read() {
-  int vert0, vert1;
-  while (cin >> vert0 >> vert1) {
-    this->addEdge(vert0, vert1);
-  }
+int Graph::getNedges() const{
+	return this->nEdges;
+}
+int Graph::getNvertices() const{
+	return this->nVertices;
 }
 
 void Graph::print() const{

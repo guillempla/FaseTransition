@@ -12,6 +12,8 @@ using namespace std;
 class Graph {
   private:
     vector<list<int> > graph;
+    int nEdges;
+    int nVertices;
   public:
     //___________CONSTRUCTORES__________
     Graph();
@@ -19,16 +21,19 @@ class Graph {
     //Graph(const Graph & graph);
     ~Graph();
     //___________MODIFICADORES__________
-    vector<list<int> > getGraph() const;
     void addEdge(const int vert0, const int vert1);
     void deleteEdge(int vert0, int vert1);
     void deleteVert(int vert);
+    void read();
+    
+  public:
+    //__________CONSULTORES__________
+    vector<list<int> > getGraph() const;
+    int getNedges() const;
+    int getNvertices() const;
     Graph percolateVertices(float q) const;
     Graph percolateEdges(float q);
     bool checkConnected(const list<int>& top, const list<int>& bottom) const;
-  public:
-    //__________CONSULTORES__________
-    void read();
     void print() const;
 };
 #endif

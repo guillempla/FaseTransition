@@ -1,5 +1,5 @@
 import networkx as nx
-N = 9
+N = 50
 G = nx.Graph()
 #G=nx.complete_graph(100)
 G = nx.grid_2d_graph(N,N)
