@@ -100,6 +100,24 @@ bool Graph::checkConnected(const list<int>& top, const list<int>& bottom) const{
   return uf.connected();
 }
 
+bool Graph::checkCicles() {
+	Graph aux = *this;
+	UnionFind uf(this->graph.size());
+	for (int i = 0; i < this->graph.size(); ++i) {
+		list<int>::iterator it = this->graph[i].begin();
+		while (it != this->graph[i].end()) {
+			if (not uf.unify(i, *it)) {
+				*this = aux;
+				return true;
+			}
+			this->deleteEdge(i, *it);
+			it = this->graph[i].begin();
+		}
+	}
+	*this = aux;
+	return false;
+}
+
 int Graph::getNedges() const{
 	return this->nEdges;
 }

@@ -19,10 +19,10 @@ int UnionFind::find(int i) {
   return i;
 }
 
-void UnionFind::unify(const int p, const int q) {
+bool UnionFind::unify(const int p, const int q) {
   int i = find(p);
   int j = find(q);
-  if (i == j) return;
+  if (i == j) return false;
   if (sz[i] < sz[j]) {
     id[i] = j;
     sz[j] += sz[i];
@@ -31,6 +31,7 @@ void UnionFind::unify(const int p, const int q) {
     id[j] = i;
     sz[i] += sz[j];
   }
+  return true;
 }
 
 void UnionFind::initializeTopBottom(const list<int>& top, const list<int>& bottom) {

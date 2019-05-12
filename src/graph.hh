@@ -25,7 +25,7 @@ class Graph {
     void deleteEdge(int vert0, int vert1);
     void deleteVert(int vert);
     void read();
-    
+
   public:
     //__________CONSULTORES__________
     vector<list<int> > getGraph() const;
@@ -34,6 +34,7 @@ class Graph {
     Graph percolateVertices(int numerador, int denominador) const;
     Graph percolateEdges(int numerador, int denominador);
     bool checkConnected(const list<int>& top, const list<int>& bottom) const;
+    bool checkCicles();
     void print() const;
 
     //ALTRES

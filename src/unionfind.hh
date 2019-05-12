@@ -13,7 +13,7 @@ class UnionFind {
     UnionFind(int n);
   public:
     int find(int i);
-    void unify(const int p, const int q);
+    bool unify(const int p, const int q);
     void initializeTopBottom(const list<int>& top, const list<int>& bottom);
     bool connected();
 };
