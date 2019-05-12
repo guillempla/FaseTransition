@@ -1,5 +1,5 @@
 CC    := g++
-EXECS := main driverGraph
+EXECS := main driverGraph zoom 
 
 go: main
 	@clear
@@ -9,6 +9,14 @@ go: main
 main: main.cc graph.cc unionfind.cc
 	$(CC) -O2 $+ -o $@
 
+zoom: zoom.cc graph.cc unionfind.cc
+	$(CC) -O2 $+ -o $@
+
+main1: zoom
+	@clear
+	@python3 graphgen.py > in.txt
+	@time ./zoom < in.txt
+	
 graph: graph.cc
 	$(CC) $+ -o $@
 
