@@ -5,8 +5,8 @@
 #include "graph.hh"
 using namespace std;
 
-const int INTERVALS = 30;
-const int EXPERIMENTS = 15;
+const int INTERVALS = 41;
+const int EXPERIMENTS = 10;
 
 // ========================================================================== //
 
@@ -80,13 +80,13 @@ int main() {
     n_edge_vert[i] /= nombre_experiments_per_q;
     n_edge_edge[i] /= nombre_experiments_per_q;
   }
-  for (int i = 0; i < nombre_intervals; ++i){
-  	cout << i/double(denominador) <<" "<< propietat_vert[i] << " ";
+	for (int i = 0; i < nombre_intervals; ++i){
+  	cout <<i<<" "<< i/double(denominador) <<" "<< propietat_vert[i] << " ";
 		cout << temps_vert[i] <<" "<< n_edge_vert[i] + nVert;
 
     cout << " || ";
 
-    cout << i/double(denominador) <<" "<< propietat_vert[i] << " ";
+    cout << i/double(denominador) <<" "<< propietat_edge[i] << " ";
     cout << temps_edge[i] <<" "<<n_edge_edge[i] + nVert << endl;
   }
 }
