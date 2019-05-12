@@ -23,10 +23,20 @@ main1: zoom
 	@python3 graphgen.py > in.txt
 	@time ./zoom < in.txt
 
+watts_c: main_c
+	@clear
+	@python3 watts.py > watts.in
+	@time ./main_c < watts.in
+
 barbasi_c: main_c
 	@clear
 	@python3 barbasi.py > barbasi.in
 	@time ./main_c < barbasi.in
+
+watts_d: main_d
+	@clear
+	@python3 watts.py > watts.in
+	@time ./main_d < watts.in
 
 barbasi_d: main_d
 	@clear
