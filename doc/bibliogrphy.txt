@@ -1,2 +1,13 @@
 https://stackoverflow.com/questions/18726102/what-difference-between-rand-and-random-functions
 https://algs4.cs.princeton.edu/lectures/15UnionFind-2x2.pdf
+https://en.wikipedia.org/wiki/Lattice_graph
+http://mathworld.wolfram.com/GridGraph.html
+https://en.wikipedia.org/wiki/Random_graph
+https://networkx.github.io/documentation/stable/reference/index.html
+https://www.geeksforgeeks.org/barabasi-albert-graph-scale-free-models/
+https://en.wikipedia.org/wiki/Scale-free_network
+https://ca.wikipedia.org/wiki/Distribuci%C3%B3_de_grau
+https://en.wikipedia.org/wiki/Power_law
+https://en.wikipedia.org/wiki/Watts%E2%80%93Strogatz_model
+https://www.revolvy.com/page/Watts%E2%80%93Strogatz-model
+https://en.wikipedia.org/wiki/Small-world_network
