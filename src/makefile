@@ -3,7 +3,7 @@ EXECS := main driverGraph zoom
 
 go: main
 	@clear
-	@python3 graphgen.py > in.txt
+	@python3 grid.py > in.txt
 	@time ./main < in.txt
 
 main: main.cc graph.cc unionfind.cc
@@ -20,7 +20,7 @@ main_d: main_d.cc graph.cc unionfind.cc
 
 main1: zoom
 	@clear
-	@python3 graphgen.py > in.txt
+	@python3 grid.py > in.txt
 	@time ./zoom < in.txt
 
 zoom_c: zoom_c.cc graph.cc unionfind.cc
@@ -28,28 +28,28 @@ zoom_c: zoom_c.cc graph.cc unionfind.cc
 
 main2: zoom_c
 	@clear
-	@python3 barbasi.py > barbasi.in
-	@time ./zoom_c < barbasi.in
+	@python3 barabasi.py > barabasi.in
+	@time ./zoom_c < barabasi.in
 
 watts_c: main_c
 	@clear
 	@python3 watts.py > watts.in
 	@time ./main_c < watts.in
 
-barbasi_c: main_c
+barabasi_c: main_c
 	@clear
-	@python3 barbasi.py > barbasi.in
-	@time ./main_c < barbasi.in
+	@python3 barabasi.py > barabasi.in
+	@time ./main_c < barabasi.in
 
 watts_d: main_d
 	@clear
 	@python3 watts.py > watts.in
 	@time ./main_d < watts.in
 
-barbasi_d: main_d
+barabasi_d: main_d
 	@clear
-	@python3 barbasi.py > barbasi.in
-	@time ./main_d < barbasi.in
+	@python3 barabasi.py > barabasi.in
+	@time ./main_d < barabasi.in
 
 graph: graph.cc
 	$(CC) $+ -o $@
