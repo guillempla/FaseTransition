@@ -22,6 +22,10 @@ https://en.wikipedia.org/wiki/Watts%E2%80%93Strogatz_model
 
 https://www.revolvy.com/page/Watts%E2%80%93Strogatz-model
 
+https://www.revolvy.com/page/Average-path-length
+
+https://www.revolvy.com/page/Clustering-coefficient
+
 https://en.wikipedia.org/wiki/Small-world_network
 
 https://networkx.github.io/documentation/stable/reference/algorithms/smetric.html
