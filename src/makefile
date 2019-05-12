@@ -1,5 +1,5 @@
 CC    := g++
-EXECS := main driverGraph zoom 
+EXECS := main driverGraph zoom
 
 go: main
 	@clear
@@ -16,7 +16,12 @@ main1: zoom
 	@clear
 	@python3 graphgen.py > in.txt
 	@time ./zoom < in.txt
-	
+
+barbasi: main
+	@clear
+	@python3 barbasi.py > barbasi.in
+	@time ./main < barbasi.in
+
 graph: graph.cc
 	$(CC) $+ -o $@
 
