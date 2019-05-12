@@ -5,8 +5,8 @@
 #include "graph.hh"
 using namespace std;
 
-const int INTERVALS = 10;
-const int EXPERIMENTS = 30;
+const int INTERVALS = 41;
+const int EXPERIMENTS = 10;
 
 // ========================================================================== //
 
@@ -64,8 +64,7 @@ int main() {
 
   clock_t inici;
   for (int id_interval = 0; id_interval < nombre_intervals; id_interval++) {
-  	/*double q = double(id_interval) / denominador;
-  	cout << id_interval <<" "<< q<<endl;*/
+  	cout << id_interval <<" / "<< nombre_intervals<<endl;
     for (int i = 0; i < nombre_experiments_per_q; ++i){
     	bool esConnex;
       Graph graf_aux;
@@ -100,12 +99,12 @@ int main() {
     n_edge_edge[i] /= nombre_experiments_per_q;
   }
   for (int i = 0; i < nombre_intervals; ++i){
-  	cout << i/double(denominador) <<" "<< propietat_vert[i] << " ";
+  	cout <<i<<" "<< i/double(denominador) <<" "<< propietat_vert[i] << " ";
 		cout << temps_vert[i] <<" "<< n_edge_vert[i] + nVert;
 
     cout << " || ";
 
-    cout << i/double(denominador) <<" "<< propietat_vert[i] << " ";
+    cout << i/double(denominador) <<" "<< propietat_edge[i] << " ";
     cout << temps_edge[i] <<" "<<n_edge_edge[i] + nVert << endl;
   }
 }

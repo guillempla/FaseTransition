@@ -5,15 +5,21 @@
 #include "graph.hh"
 using namespace std;
 
-const int INTERVALS = 1;
-bool ZOOM_VERT = false;	//nomes fer zoom amb percolacio x vertex ??
-const int num_ini = 0;	//numerador inici
-const int den_ini = 39;	//denominador inici
+const int INTERVALS = 200;
+const int EXPERIMENTS = 2000;
+bool ZOOM_VERT = true;	//nomes fer zoom amb percolacio x vertex ??
 
-const int num_fi = 30;	//numerador fi
-const int den_fi = 39;	//denominador fi
 
-const int EXPERIMENTS = 5;
+const int num_ini = 10;	//numerador inici
+const int num_fi = 23;	//numerador fi
+
+
+
+
+const int den_ini = 41;	//denominador inici = #intervals main.cc
+const int den_fi = 41;	//denominador fi
+
+
 int num_ret;
 int den_ret;
 
@@ -137,12 +143,12 @@ INTERVALS ==== 3
     n_edge_edge[i] /= nombre_experiments_per_q;
   }
   for (int i = 0; i < nombre_intervals; ++i){
-  	cout <<"# "<< q[i];
   	if (ZOOM_VERT){
+  		cout <<"# "<< q[i];
 	  	cout <<" "<< propietat_vert[i] << " ";
 			cout << temps_vert[i] <<" "<< n_edge_vert[i] + nVert << endl;
 		}else{
-    	cout <<" "<<propietat_edge[i] << " ";
+    	cout << q[i] <<" " << propietat_edge[i] << " ";
     	cout << temps_edge[i] <<" "<<n_edge_edge[i] + nVert << endl;
     }
   }
