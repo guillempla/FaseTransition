@@ -3,10 +3,10 @@
 En la carpeta src/ es troben tots els codis font necessaris, un makefile i els
 programes en python que generen els grafs.
 
-En la carpeta doc/ es troben totes les dades obtingudes durant el treball en
-format odt.
+Per altra banda, en la carpeta doc/ es troben totes les dades obtingudes durant el treball en
+format ods juntament amb l'enunciat de la pràctica.
 
-##Instruccions per a la execució del codi:
+## Instruccions per a la execució del codi
 
 En la carpeta src/ hi ha un makefile que permet executar les següents opcions:
 
