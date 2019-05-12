@@ -23,6 +23,14 @@ main1: zoom
 	@python3 graphgen.py > in.txt
 	@time ./zoom < in.txt
 
+zoom_c: zoom_c.cc graph.cc unionfind.cc
+	$(CC) -O2 $+ -o $@
+
+main2: zoom_c
+	@clear
+	@python3 barbasi.py > barbasi.in
+	@time ./zoom_c < barbasi.in
+
 watts_c: main_c
 	@clear
 	@python3 watts.py > watts.in
