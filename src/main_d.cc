@@ -5,8 +5,8 @@
 #include "graph.hh"
 using namespace std;
 
-const int INTERVALS = 10;
-const int EXPERIMENTS = 30;
+const int INTERVALS = 30;
+const int EXPERIMENTS = 15;
 
 // ========================================================================== //
 
@@ -16,25 +16,6 @@ Graph percolateVert(const Graph& graph, int numerador, int denominador)  {
 
 Graph percolateEdge(Graph& graph, int numerador, int denominador)  {
 	return graph.percolateEdges(numerador, denominador);
-}
-
-bool connectaGraella(const Graph& graph, int n){
-	list <int> entrada;
-  vector<bool> escollit(n, false);
-	while (sqrt(n) - entrada.size() > 0) {
-    int r = rand()%n;
-    if (not escollit[r]) {
-      entrada.push_back(r);
-      escollit[r] = true;
-    }
-  }
-	list <int> sortida;
-	while (sqrt(n) - sortida.size() > 0) {
-    int r = rand()%n;
-    if (not escollit[r])
-      sortida.push_back(r);
-  }
-	return graph.checkConnected(entrada, sortida);
 }
 
 double calcula_temps(double inici, double fi){
@@ -67,27 +48,27 @@ int main() {
   	/*double q = double(id_interval) / denominador;
   	cout << id_interval <<" "<< q<<endl;*/
     for (int i = 0; i < nombre_experiments_per_q; ++i){
-    	bool esConnex;
+    	bool existeixenCicles;
       Graph graf_aux;
 
       //PERCOLACIO PER VERTICES
       graf_aux = percolateVert(graph, id_interval, denominador);
     	//mesurem temps de trobar connexio en graf percolat per VERTEX
     	inici = clock();
-    	esConnex = connectaGraella (graf_aux, nVert);
+    	existeixenCicles = graf_aux.checkCicles();
     	temps_vert[id_interval] += calcula_temps(inici, clock());
       //********************************
-      if (esConnex) propietat_vert[id_interval] += 1.0;
+      if (existeixenCicles) propietat_vert[id_interval] += 1.0;
       n_edge_vert[id_interval] += double(graf_aux.getNedges());
 
       //PERCOLACIO PER EDGES
     	graf_aux = percolateEdge(graph, id_interval, denominador);
 			//mesurem temps de trobar connexio em graf percolat per EDGES
     	inici = clock();
-    	esConnex = connectaGraella (graf_aux, nVert);
+    	existeixenCicles = graf_aux.checkCicles();
     	temps_edge[id_interval] += calcula_temps(inici, clock());
 			//********************************
-      if (esConnex) propietat_edge[id_interval] += 1.0;
+      if (existeixenCicles) propietat_edge[id_interval] += 1.0;
       n_edge_edge[id_interval] += double(graf_aux.getNedges());
     }
   }

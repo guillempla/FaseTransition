@@ -15,15 +15,23 @@ zoom: zoom.cc graph.cc unionfind.cc
 main_c: main_c.cc graph.cc unionfind.cc
 	$(CC) -O2 $+ -o $@
 
+main_d: main_d.cc graph.cc unionfind.cc
+	$(CC) -O2 $+ -o $@
+
 main1: zoom
 	@clear
 	@python3 graphgen.py > in.txt
 	@time ./zoom < in.txt
 
-barbasi: main_c
+barbasi_c: main_c
 	@clear
 	@python3 barbasi.py > barbasi.in
 	@time ./main_c < barbasi.in
+
+barbasi_d: main_d
+	@clear
+	@python3 barbasi.py > barbasi.in
+	@time ./main_d < barbasi.in
 
 graph: graph.cc
 	$(CC) $+ -o $@
