@@ -1,5 +1,5 @@
 CC    := g++
-EXECS := main driverGraph zoom
+EXECS := main driverGraph zoom main_c zoom_c main_d main1 main2 main3
 
 go: main
 	@clear
@@ -67,4 +67,4 @@ unionfind: unionfind.cc
 	$(CC) $+ -o $@
 
 clean:
-	rm -fv $(EXECS) *.txt
+	rm -fv $(EXECS) *.txt *.in
