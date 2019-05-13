@@ -1,5 +1,7 @@
 # PhaseTransition
 
+El document *phasetrans.pdf* conté tota la documentació del treball.
+
 En la carpeta src/ es troben tots els codis font necessaris, un makefile i els
 programes en python que generen els grafs.
 
