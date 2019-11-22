@@ -21,5 +21,5 @@ En la carpeta src/ hi ha un makefile que permet executar les següents opcions:
 ## Authors
 
 - [@arnauruana](https://github.com/arnauruana)
-- [@guillempla](https://github.com/guillempla)
 - [@d3m3n7](https://github.com/d3m3n7)
+- [@guillempla](https://github.com/guillempla)
