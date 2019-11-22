@@ -17,3 +17,9 @@ En la carpeta src/ hi ha un makefile que permet executar les següents opcions:
 * make watts_d: Crea un graf Watts-Strogatz i executa l'apartat d.
 * make barabasi_c: Crea un graf Barabasi-Albert i executa l'apartat c.
 * make barabasi_d: Crea un graf Barabasi-Albert i executa l'apartat d.
+
+## Authors
+
+- [@arnauruana](https://github.com/arnauruana)
+- [@guillempla](https://github.com/guillempla)
+- [@d3m3n7](https://github.com/d3m3n7)
